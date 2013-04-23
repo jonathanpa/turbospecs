@@ -19,6 +19,8 @@ endif
 
 let g:loaded_jumpback = "true"
 
+let s:auto_mode = 0
+
 function! Spec()
   :ruby spec
 endfunction
@@ -31,9 +33,32 @@ function! ReSpec()
   :ruby re_spec
 endfunction
 
+function! LoadSpec()
+  :call VimuxRunCommand("load '".@%."';")
+endfunction
+
+function! ToggleAutoMode()
+  let s:auto_mode = (s:auto_mode + 1) % 2
+
+  if s:auto_mode
+    augroup turbospecs
+      autocmd BufWrite *[^_spec].rb :TurboSpecLoad
+      autocmd BufWrite *_spec.rb :TurboSpec
+    augroup END
+    echo "Automode ON"
+  else
+    augroup turbospecs
+      autocmd!
+    augroup END
+    echo "Automode OFF"
+  endif
+endfunction
+
 command TurboSpec :call Spec()
 command TurboSpecLine :call SpecLine()
 command TurboSpecAgain :call ReSpec()
+command TurboSpecLoad :call LoadSpec()
+command TurboToggleAutoMode :call ToggleAutoMode()
 
 
 ruby << EOF
