@@ -1,5 +1,5 @@
 " Exit quickly when already loaded.
-if exists("g:loaded_jumpback")
+if exists("g:loaded_turbospecs")
   finish
 endif
 
@@ -13,31 +13,31 @@ endif
 " Check for Ruby functionality.
 if !has("ruby")
     echohl ErrorMsg
-    echon "Sorry, Jumpback requires ruby support."
+    echon "Sorry, Turbospecs requires ruby support."
   finish
 endif
 
-let g:loaded_jumpback = "true"
+let g:loaded_turbospecs = "true"
 
 let s:auto_mode = 0
 
-function! Spec()
+function! s:Spec()
   :ruby spec
 endfunction
 
-function! SpecLine()
+function! s:SpecLine()
   :ruby spec_line
 endfunction
 
-function! ReSpec()
+function! s:ReSpec()
   :ruby re_spec
 endfunction
 
-function! LoadSpec()
+function! s:LoadSpec()
   :call VimuxRunCommand("load '".@%."';")
 endfunction
 
-function! ToggleAutoMode()
+function! s:ToggleAutoMode()
   let s:auto_mode = (s:auto_mode + 1) % 2
 
   if s:auto_mode
@@ -54,11 +54,11 @@ function! ToggleAutoMode()
   endif
 endfunction
 
-command TurboSpec :call Spec()
-command TurboSpecLine :call SpecLine()
-command TurboSpecAgain :call ReSpec()
-command TurboSpecLoad :call LoadSpec()
-command TurboToggleAutoMode :call ToggleAutoMode()
+command TurboSpec :call s:Spec()
+command TurboSpecLine :call s:SpecLine()
+command TurboSpecAgain :call s:ReSpec()
+command TurboSpecLoad :call s:LoadSpec()
+command TurboToggleAutoMode :call s:ToggleAutoMode()
 
 
 ruby << EOF
