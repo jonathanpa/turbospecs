@@ -58,7 +58,7 @@ command TurboSpec :call s:Spec()
 command TurboSpecLine :call s:SpecLine()
 command TurboSpecAgain :call s:ReSpec()
 command TurboSpecLoad :call s:LoadSpec()
-command TurboToggleAutoMode :call s:ToggleAutoMode()
+command TurboSpecAutoMode :call s:ToggleAutoMode()
 
 
 ruby << EOF
