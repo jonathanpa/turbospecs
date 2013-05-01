@@ -3,8 +3,8 @@ Turbospecs
 
 # What is ?
 
-*Take vim, tmux, rspec (rspec-console -facultative-) and **Turbospecs**.
-Mix all together and you get one of the best integrated environment to run rspec using vim.*
+Take vim, tmux, rspec (rspec-console -facultative-) and **Turbospecs**.
+Mix all together and you get one of the best integrated environment to run rspec using vim.
 
 More seriously, **Turbospecs** is a vim plugin to integrate your rspec workflow into your vim and tmux sessions.
 
