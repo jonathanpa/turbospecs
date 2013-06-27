@@ -42,7 +42,7 @@ function! s:ToggleAutoMode()
 
   if s:auto_mode
     augroup turbospecs
-      autocmd BufWrite *[^_spec].rb :TurboSpecLoad
+      autocmd BufWrite *(_spec)\@!.rb :TurboSpecLoad
       autocmd BufWrite *_spec.rb :TurboSpec
     augroup END
     echo "Automode ON"
@@ -97,21 +97,6 @@ def re_spec
   if @last_spec
    run_spec
   end
-end
-
-def tab_changed
-  @previous = @current if @current
-  @current =  VIM::evaluate("tabpagenr()")
-end
-
-def jump_tab
- if @previous
-   VIM::command("tabn #{@previous}")
- end
-end
-
-def startup
-  @current = VIM::evaluate("tabpagenr()")
 end
 
 EOF
