@@ -32,3 +32,7 @@ Open a tmux pane with vimux and then :
 The **automode** is done to be used with [rspec-console](https://github.com/nviennot/rspec-console) to *autoload* your files (models, controllers, ...) and *autorun* the spec files when they are saved.
 
 Enable/disable the **automode** with the command `:TurboSpecAutoMode`.
+
+## TODO
+
+* Rewrite the plugin in full vimscript with a **cleaner** code.
