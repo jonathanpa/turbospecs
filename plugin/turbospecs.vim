@@ -42,8 +42,7 @@ function! s:ToggleAutoMode()
 
   if s:auto_mode
     augroup turbospecs
-      autocmd BufWrite *(_spec)\@!.rb :TurboSpecLoad
-      autocmd BufWrite *_spec.rb :TurboSpec
+      autocmd BufWrite *.rb if match(expand('%'), '_spec.rb$') >= 0 | execute "TurboSpec" | else | execute "TurboSpecLoad" | endif
     augroup END
     echo "Automode ON"
   else
